@@ -1,12 +1,11 @@
 .App {
-  text-align: center;
+  /* text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 183px;
   flex-direction: column;
   background-color: teal;
-  color: antiquewhite;
+  color: antiquewhite; */
 }
 .ubuntuBold {
   font-family: "Ubuntu-Bold";
