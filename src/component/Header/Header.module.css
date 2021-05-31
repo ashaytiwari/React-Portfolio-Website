@@ -4,6 +4,36 @@
 .logoImage {
   width: 90px !important;
 }
-.section {
-  padding: 100px;
+.navLinks {
+  text-decoration: none;
+  color: #fff;
+  font-family: "Ubuntu-Regular";
+  margin: 0 20px;
+}
+.navLinksMenu {
+  text-decoration: none;
+  color: #000;
+  font-family: "Ubuntu-Regular";
+}
+.activeNavLinkMenu,
+.navLinksMenu:hover {
+  color: #d8ab4e;
+  font-family: "Ubuntu-Regular";
+  text-decoration: none;
+}
+.navLinks:hover,
+.activeNavLink {
+  color: #d8ab4e;
+  font-family: "Ubuntu-Regular";
+  margin: 0 20px;
+  text-decoration: none;
+}
+.logoButton {
+  outline: none;
+  background-color: inherit;
+  padding: 0 !important;
+}
+.menuHeader ul {
+  padding: 0px 5px;
+  text-align: center;
 }

@@ -2,41 +2,33 @@ import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
-import Badge from "@material-ui/core/Badge";
-import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { useStyles } from "./Header.styles";
 import styles from "./Header.module.css";
 import logo from "../../assets/Images/logo2.png";
 import Scrollspy from "react-scrollspy";
+import { useLocation } from "react-router-dom";
+import { MenuItem } from "@material-ui/core";
+
+//Static Data for header
+const headerData = [
+  { name: "Home", id: "#home" },
+  { name: "About", id: "#about" },
+  { name: "Work", id: "#work" },
+  { name: "Contact", id: "#contact" },
+];
 
 export default function PrimarySearchAppBar() {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const location = useLocation();
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  console.log(location.hash, "hash");
 
-  const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
   };
 
   const handleMobileMenuOpen = (event) => {
@@ -53,65 +45,26 @@ export default function PrimarySearchAppBar() {
       transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
+      className={`${styles.menuHeader} text-center`}
     >
       <Scrollspy items={["home", "about", "contact", "portfolio"]}>
-        <div>
-          <li>
-            <a href={"#home"}>Home</a>
-          </li>
-        </div>
-        <div>
-          <li>
-            <a href={"#about"}>About</a>
-          </li>
-        </div>
-        <div>
-          <li>
-            <a href={"#contact"}>Contact</a>
-          </li>
-        </div>
-        <div>
-          <li>
-            <a href={"#portfolio"}>Portfolio</a>
-          </li>
-        </div>
-        {/* <li>
-                <a href={"home"}>Home</a>
-              </li>
-              <li>
-                <a href={"home"}>Home</a>
-              </li>
-              <li>
-                <a href={"home"}>Home</a>
-              </li> */}
+        {headerData.map((item) => (
+          <MenuItem onClick={() => handleMobileMenuClose()}>
+            <a
+              href={item.id}
+              className={
+                !location.hash && item.name === "Home"
+                  ? styles.activeNavLinkMenu
+                  : location.hash === item.id
+                  ? styles.activeNavLinkMenu
+                  : styles.navLinksMenu
+              }
+            >
+              {item.name}
+            </a>
+          </MenuItem>
+        ))}
       </Scrollspy>
-      {/* <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem> */}
     </Menu>
   );
 
@@ -121,66 +74,31 @@ export default function PrimarySearchAppBar() {
         <AppBar position="static" className={styles.header}>
           <Toolbar>
             <div className={styles.headerLogo}>
-              <img src={logo} alt={"logo"} className={styles.logoImage} />
+              <IconButton className={styles.logoButton}>
+                <img src={logo} alt={"logo"} className={styles.logoImage} />
+              </IconButton>
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <Scrollspy items={["home", "about", "contact", "portfolio"]}>
-                <div>
-                  <li>
-                    <a href={"#home"}>Home</a>
-                  </li>
-                </div>
-                <div>
-                  <li>
-                    <a href={"#about"}>About</a>
-                  </li>
-                </div>
-                <div>
-                  <li>
-                    <a href={"#contact"}>Contact</a>
-                  </li>
-                </div>
-                <div>
-                  <li>
-                    <a href={"#portfolio"}>Portfolio</a>
-                  </li>
-                </div>
-                {/* <li>
-                <a href={"home"}>Home</a>
-              </li>
-              <li>
-                <a href={"home"}>Home</a>
-              </li>
-              <li>
-                <a href={"home"}>Home</a>
-              </li> */}
+              <Scrollspy
+                className="scrollspy"
+                items={["home", "about", "work", "contact"]}
+              >
+                {headerData.map((item, index) => (
+                  <a
+                    href={item.id}
+                    className={
+                      !location.hash && item.name === "Home"
+                        ? styles.activeNavLink
+                        : location.hash === item.id
+                        ? styles.activeNavLink
+                        : styles.navLinks
+                    }
+                  >
+                    {item.name}
+                  </a>
+                ))}
               </Scrollspy>
-              {/* <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div> */}
-              {/* <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton> */}
             </div>
             <div className={classes.sectionMobile}>
               <IconButton
@@ -198,17 +116,265 @@ export default function PrimarySearchAppBar() {
         {renderMobileMenu}
       </div>
       <div>
-        <section id="home" className={styles.section}>
-          section 1
+        <section id="home">
+          <h2>Home</h2>
+          <p>
+            What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the
+            printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown
+            printer took a galley of type and scrambled it to make a type
+            specimen book. It has survived not only five centuries, but also the
+            leap into electronic typesetting, remaining essentially unchanged.
+            It was popularised in the 1960s with the release of Letraset sheets
+            containing Lorem Ipsum passages, and more recently with desktop
+            publishing software like Aldus PageMaker including versions of Lorem
+            Ipsum. Why do we use it? It is a long established fact that a reader
+            will be distracted by the readable content of a page when looking at
+            its layout. The point of using Lorem Ipsum is that it has a
+            more-or-less normal distribution of letters, as opposed to using
+            'Content here, content here', making it look like readable English.
+            Many desktop publishing packages and web page editors now use Lorem
+            Ipsum as their default model text, and a search for 'lorem ipsum'
+            will uncover many web sites still in their infancy. Various versions
+            have evolved over the years, sometimes by accident, sometimes on
+            purpose (injected humour and the like). Where does it come from?
+            Contrary to popular belief, Lorem Ipsum is not simply random text.
+            It has roots in a piece of classical Latin literature from 45 BC,
+            making it over 2000 years old. Richard McClintock, a Latin professor
+            at Hampden-Sydney College in Virginia, looked up one of the more
+            obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+            going through the cites of the word in classical literature,
+            discovered the undoubtable source. Lorem Ipsum comes from sections
+            1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes
+            of Good and Evil) by Cicero, written in 45 BC. This book is a
+            treatise on the theory of ethics, very popular during the
+            Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
+            amet..", comes from a line in section 1.10.32. The standard chunk of
+            Lorem Ipsum used since the 1500s is reproduced below for those
+            interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et
+            Malorum" by Cicero are also reproduced in their exact original form,
+            accompanied by English versions from the 1914 translation by H.
+            Rackham. Where can I get some? There are many variations of passages
+            of Lorem Ipsum available, but the majority have suffered alteration
+            in some form, by injected humour, or randomised words which don't
+            look even slightly believable. If you are going to use a passage of
+            Lorem Ipsum, you need to be sure there isn't anything embarrassing
+            hidden in the middle of text. All the Lorem Ipsum generators on the
+            Internet tend to repeat predefined chunks as necessary, making this
+            the first true generator on the Internet. It uses a dictionary of
+            over 200 Latin words, combined with a handful of model sentence
+            structures, to generate Lorem Ipsum which looks reasonable. The
+            generated Lorem Ipsum is therefore always free from repetition,
+            injected humour, or non-characteristic words etc.
+          </p>
         </section>
-        <section id="about" className={styles.section}>
-          section 2
+        <section id="about">
+          <h2>About</h2>
+          <p>
+            What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the
+            printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown
+            printer took a galley of type and scrambled it to make a type
+            specimen book. It has survived not only five centuries, but also the
+            leap into electronic typesetting, remaining essentially unchanged.
+            It was popularised in the 1960s with the release of Letraset sheets
+            containing Lorem Ipsum passages, and more recently with desktop
+            publishing software like Aldus PageMaker including versions of Lorem
+            Ipsum. Why do we use it? It is a long established fact that a reader
+            will be distracted by the readable content of a page when looking at
+            its layout. The point of using Lorem Ipsum is that it has a
+            more-or-less normal distribution of letters, as opposed to using
+            'Content here, content here', making it look like readable English.
+            Many desktop publishing packages and web page editors now use Lorem
+            Ipsum as their default model text, and a search for 'lorem ipsum'
+            will uncover many web sites still in their infancy. Various versions
+            have evolved over the years, sometimes by accident, sometimes on
+            purpose (injected humour and the like). Where does it come from?
+            Contrary to popular belief, Lorem Ipsum is not simply random text.
+            It has roots in a piece of classical Latin literature from 45 BC,
+            making it over 2000 years old. Richard McClintock, a Latin professor
+            at Hampden-Sydney College in Virginia, looked up one of the more
+            obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+            going through the cites of the word in classical literature,
+            discovered the undoubtable source. Lorem Ipsum comes from sections
+            1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes
+            of Good and Evil) by Cicero, written in 45 BC. This book is a
+            treatise on the theory of ethics, very popular during the
+            Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
+            amet..", comes from a line in section 1.10.32. The standard chunk of
+            Lorem Ipsum used since the 1500s is reproduced below for those
+            interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et
+            Malorum" by Cicero are also reproduced in their exact original form,
+            accompanied by English versions from the 1914 translation by H.
+            Rackham. Where can I get some? There are many variations of passages
+            of Lorem Ipsum available, but the majority have suffered alteration
+            in some form, by injected humour, or randomised words which don't
+            look even slightly believable. If you are going to use a passage of
+            Lorem Ipsum, you need to be sure there isn't anything embarrassing
+            hidden in the middle of text. All the Lorem Ipsum generators on the
+            Internet tend to repeat predefined chunks as necessary, making this
+            the first true generator on the Internet. It uses a dictionary of
+            over 200 Latin words, combined with a handful of model sentence
+            structures, to generate Lorem Ipsum which looks reasonable. The
+            generated Lorem Ipsum is therefore always free from repetition,
+            injected humour, or non-characteristic words etc.
+          </p>
         </section>
-        <section id="contact" className={styles.section}>
-          section 3
+        <section id="work">
+          <h2>Work</h2>
+          <p>
+            What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the
+            printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown
+            printer took a galley of type and scrambled it to make a type
+            specimen book. It has survived not only five centuries, but also the
+            leap into electronic typesetting, remaining essentially unchanged.
+            It was popularised in the 1960s with the release of Letraset sheets
+            containing Lorem Ipsum passages, and more recently with desktop
+            publishing software like Aldus PageMaker including versions of Lorem
+            Ipsum. Why do we use it? It is a long established fact that a reader
+            will be distracted by the readable content of a page when looking at
+            its layout. The point of using Lorem Ipsum is that it has a
+            more-or-less normal distribution of letters, as opposed to using
+            'Content here, content here', making it look like readable English.
+            Many desktop publishing packages and web page editors now use Lorem
+            Ipsum as their default model text, and a search for 'lorem ipsum'
+            will uncover many web sites still in their infancy. Various versions
+            have evolved over the years, sometimes by accident, sometimes on
+            purpose (injected humour and the like). Where does it come from?
+            Contrary to popular belief, Lorem Ipsum is not simply random text.
+            It has roots in a piece of classical Latin literature from 45 BC,
+            making it over 2000 years old. Richard McClintock, a Latin professor
+            at Hampden-Sydney College in Virginia, looked up one of the more
+            obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+            going through the cites of the word in classical literature,
+            discovered the undoubtable source. Lorem Ipsum comes from sections
+            1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes
+            of Good and Evil) by Cicero, written in 45 BC. This book is a
+            treatise on the theory of ethics, very popular during the
+            Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
+            amet..", comes from a line in section 1.10.32. The standard chunk of
+            Lorem Ipsum used since the 1500s is reproduced below for those
+            interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et
+            Malorum" by Cicero are also reproduced in their exact original form,
+            accompanied by English versions from the 1914 translation by H.
+            Rackham. Where can I get some? There are many variations of passages
+            of Lorem Ipsum available, but the majority have suffered alteration
+            in some form, by injected humour, or randomised words which don't
+            look even slightly believable. If you are going to use a passage of
+            Lorem Ipsum, you need to be sure there isn't anything embarrassing
+            hidden in the middle of text. All the Lorem Ipsum generators on the
+            Internet tend to repeat predefined chunks as necessary, making this
+            the first true generator on the Internet. It uses a dictionary of
+            over 200 Latin words, combined with a handful of model sentence
+            structures, to generate Lorem Ipsum which looks reasonable. The
+            generated Lorem Ipsum is therefore always free from repetition,
+            injected humour, or non-characteristic words etc.
+          </p>
         </section>
-        <section id="portfolio" className={styles.section}>
-          section 4
+        <section id="contact">
+          <h2>Contact</h2>
+          <p>
+            What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the
+            printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown
+            printer took a galley of type and scrambled it to make a type
+            specimen book. It has survived not only five centuries, but also the
+            leap into electronic typesetting, remaining essentially unchanged.
+            It was popularised in the 1960s with the release of Letraset sheets
+            containing Lorem Ipsum passages, and more recently with desktop
+            publishing software like Aldus PageMaker including versions of Lorem
+            Ipsum. Why do we use it? It is a long established fact that a reader
+            will be distracted by the readable content of a page when looking at
+            its layout. The point of using Lorem Ipsum is that it has a
+            more-or-less normal distribution of letters, as opposed to using
+            'Content here, content here', making it look like readable English.
+            Many desktop publishing packages and web page editors now use Lorem
+            Ipsum as their default model text, and a search for 'lorem ipsum'
+            will uncover many web sites still in their infancy. Various versions
+            have evolved over the years, sometimes by accident, sometimes on
+            purpose (injected humour and the like). Where does it come from?
+            Contrary to popular belief, Lorem Ipsum is not simply random text.
+            It has roots in a piece of classical Latin literature from 45 BC,
+            making it over 2000 years old. Richard McClintock, a Latin professor
+            at Hampden-Sydney College in Virginia, looked up one of the more
+            obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+            going through the cites of the word in classical literature,
+            discovered the undoubtable source. Lorem Ipsum comes from sections
+            1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes
+            of Good and Evil) by Cicero, written in 45 BC. This book is a
+            treatise on the theory of ethics, very popular during the
+            Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
+            amet..", comes from a line in section 1.10.32. The standard chunk of
+            Lorem Ipsum used since the 1500s is reproduced below for those
+            interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et
+            Malorum" by Cicero are also reproduced in their exact original form,
+            accompanied by English versions from the 1914 translation by H.
+            Rackham. Where can I get some? There are many variations of passages
+            of Lorem Ipsum available, but the majority have suffered alteration
+            in some form, by injected humour, or randomised words which don't
+            look even slightly believable. If you are going to use a passage of
+            Lorem Ipsum, you need to be sure there isn't anything embarrassing
+            hidden in the middle of text. All the Lorem Ipsum generators on the
+            Internet tend to repeat predefined chunks as necessary, making this
+            the first true generator on the Internet. It uses a dictionary of
+            over 200 Latin words, combined with a handful of model sentence
+            structures, to generate Lorem Ipsum which looks reasonable. The
+            generated Lorem Ipsum is therefore always free from repetition,
+            injected humour, or non-characteristic words etc.
+          </p>
+        </section>
+        <section id="section-5">
+          <h2>Section 5</h2>
+          <p>
+            What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the
+            printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown
+            printer took a galley of type and scrambled it to make a type
+            specimen book. It has survived not only five centuries, but also the
+            leap into electronic typesetting, remaining essentially unchanged.
+            It was popularised in the 1960s with the release of Letraset sheets
+            containing Lorem Ipsum passages, and more recently with desktop
+            publishing software like Aldus PageMaker including versions of Lorem
+            Ipsum. Why do we use it? It is a long established fact that a reader
+            will be distracted by the readable content of a page when looking at
+            its layout. The point of using Lorem Ipsum is that it has a
+            more-or-less normal distribution of letters, as opposed to using
+            'Content here, content here', making it look like readable English.
+            Many desktop publishing packages and web page editors now use Lorem
+            Ipsum as their default model text, and a search for 'lorem ipsum'
+            will uncover many web sites still in their infancy. Various versions
+            have evolved over the years, sometimes by accident, sometimes on
+            purpose (injected humour and the like). Where does it come from?
+            Contrary to popular belief, Lorem Ipsum is not simply random text.
+            It has roots in a piece of classical Latin literature from 45 BC,
+            making it over 2000 years old. Richard McClintock, a Latin professor
+            at Hampden-Sydney College in Virginia, looked up one of the more
+            obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+            going through the cites of the word in classical literature,
+            discovered the undoubtable source. Lorem Ipsum comes from sections
+            1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes
+            of Good and Evil) by Cicero, written in 45 BC. This book is a
+            treatise on the theory of ethics, very popular during the
+            Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
+            amet..", comes from a line in section 1.10.32. The standard chunk of
+            Lorem Ipsum used since the 1500s is reproduced below for those
+            interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et
+            Malorum" by Cicero are also reproduced in their exact original form,
+            accompanied by English versions from the 1914 translation by H.
+            Rackham. Where can I get some? There are many variations of passages
+            of Lorem Ipsum available, but the majority have suffered alteration
+            in some form, by injected humour, or randomised words which don't
+            look even slightly believable. If you are going to use a passage of
+            Lorem Ipsum, you need to be sure there isn't anything embarrassing
+            hidden in the middle of text. All the Lorem Ipsum generators on the
+            Internet tend to repeat predefined chunks as necessary, making this
+            the first true generator on the Internet. It uses a dictionary of
+            over 200 Latin words, combined with a handful of model sentence
+            structures, to generate Lorem Ipsum which looks reasonable. The
+            generated Lorem Ipsum is therefore always free from repetition,
+            injected humour, or non-characteristic words etc.
+          </p>
         </section>
       </div>
     </React.Fragment>
