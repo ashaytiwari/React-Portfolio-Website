@@ -1,5 +1,6 @@
 .header {
   background-color: #000 !important;
+  opacity: 0.9;
 }
 .logoImage {
   width: 90px !important;
@@ -35,5 +36,4 @@
 }
 .menuHeader ul {
   padding: 0px 5px;
-  text-align: center;
 }
