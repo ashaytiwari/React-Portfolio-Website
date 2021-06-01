@@ -8,7 +8,7 @@
   letter-spacing: 0.3px;
 }
 .higlightName {
-  color: #ee5921;
+  color: #e61212;
   font-family: "Alegreya-Bold";
   letter-spacing: 0.3px;
   font-size: 46px;
@@ -58,11 +58,14 @@
   margin: 10px 0;
 }
 .resumeBtn:hover {
-  background-color: #ee5921;
-  border: 1px solid #ee5921;
+  background-color: #e61212;
+  border: 1px solid #e61212;
   color: #fff !important;
 }
 .icon {
   margin-left: 10px;
   font-size: 30px !important;
+}
+.downloadLink {
+  text-decoration: none;
 }

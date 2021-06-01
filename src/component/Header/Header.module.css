@@ -18,13 +18,13 @@
 }
 .activeNavLinkMenu,
 .navLinksMenu:hover {
-  color: #ee5921;
+  color: #e61212;
   font-family: "Ubuntu-Regular";
   text-decoration: none;
 }
 .navLinks:hover,
 .activeNavLink {
-  color: #ee5921;
+  color: #e61212;
   font-family: "Ubuntu-Regular";
   margin: 0 20px;
   text-decoration: none;

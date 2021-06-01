@@ -3,6 +3,9 @@ import HomeImage from "../../assets/Images/image2.jpg";
 import styles from "./Home.module.css";
 import Button from "../../component/UI/Button/Button";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
+import resume from "../../assets/Files/resume.pdf";
+import { Tooltip } from "@material-ui/core";
+import { ResumeTooltipMsg } from "../../GlobalUtils/messageConstants";
 
 const Home = () => {
   return (
@@ -18,9 +21,18 @@ const Home = () => {
         </p>
         <p className={styles.statusText}>I'm a Frontend Developer</p>
         <p className={styles.loveText}>I love to build things for the web</p>
-        <Button className={styles.resumeBtn}>
-          View my resume <ArrowRightAltIcon className={styles.icon} />
-        </Button>
+        <Tooltip title={ResumeTooltipMsg} arrow placement={"top"}>
+          <a
+            href={resume}
+            target={"blank"}
+            download
+            className={styles.downloadLink}
+          >
+            <Button className={styles.resumeBtn}>
+              View my resume <ArrowRightAltIcon className={styles.icon} />
+            </Button>
+          </a>
+        </Tooltip>
       </div>
     </div>
   );
