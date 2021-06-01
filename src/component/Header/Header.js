@@ -8,7 +8,7 @@ import { useStyles } from "./Header.styles";
 import styles from "./Header.module.css";
 import logo from "../../assets/Images/logo2.png";
 import Scrollspy from "react-scrollspy";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { MenuItem } from "@material-ui/core";
 
 //Static Data for header
@@ -19,22 +19,38 @@ const headerData = [
   { name: "Contact", id: "#contact" },
 ];
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar(props) {
   const classes = useStyles();
   const location = useLocation();
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  console.log(location.hash, "hash");
+  const history = useHistory();
 
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+  /**
+   * function to handle Mobile Menu close
+   */
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
-  };
+  }; // end of handleMobileMenuClose
 
+  /**
+   * function to handle Mobile Menu open
+   * @param {*} event
+   */
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
-  };
+  }; // end of handleMobileMenuOpen
 
+  /**
+   * function to handle logo click
+   */
+  const logoHandler = () => {
+    history.push("/");
+    document.documentElement.scrollTop = 0; // scroll to top on logo click event
+  }; // end of logoHandler
+
+  // Component to render mobile menu view
   const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
@@ -66,7 +82,7 @@ export default function PrimarySearchAppBar() {
         ))}
       </Scrollspy>
     </Menu>
-  );
+  ); // end of mobile menu view
 
   return (
     <React.Fragment>
@@ -74,7 +90,10 @@ export default function PrimarySearchAppBar() {
         <AppBar position="fixed" className={styles.header}>
           <Toolbar variant={"dense"}>
             <div className={styles.headerLogo}>
-              <IconButton className={styles.logoButton}>
+              <IconButton
+                className={styles.logoButton}
+                onClick={() => logoHandler()}
+              >
                 <img src={logo} alt={"logo"} className={styles.logoImage} />
               </IconButton>
             </div>
