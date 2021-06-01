@@ -6,6 +6,7 @@
   flex-direction: column;
   background-color: teal;
   color: antiquewhite; */
+  overflow-x: hidden;
 }
 .ubuntuBold {
   font-family: "Ubuntu-Bold";

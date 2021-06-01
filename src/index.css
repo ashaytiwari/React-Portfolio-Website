@@ -31,7 +31,26 @@ body {
   src: local("Yellowtail-Regular"),
     url("./assets/FontFamilies/Yellowtail-Regular.ttf") format("truetype");
 }
-
+@font-face {
+  font-family: "Alegreya-Regular";
+  src: local("Alegreya-Regular"),
+    url("./assets/FontFamilies/Alegreya-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Alegreya-Medium";
+  src: local("Alegreya-Medium"),
+    url("./assets/FontFamilies/Alegreya-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Alegreya-MediumItalic";
+  src: local("Alegreya-MediumItalic"),
+    url("./assets/FontFamilies/Alegreya-MediumItalic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Alegreya-Bold";
+  src: local("Alegreya-Bold"),
+    url("./assets/FontFamilies/Alegreya-Bold.ttf") format("truetype");
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

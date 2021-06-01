@@ -2,47 +2,55 @@ import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
-import Badge from "@material-ui/core/Badge";
-import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { useStyles } from "./Header.styles";
 import styles from "./Header.module.css";
 import logo from "../../assets/Images/logo2.png";
 import Scrollspy from "react-scrollspy";
+import { useLocation, useHistory } from "react-router-dom";
+import { MenuItem } from "@material-ui/core";
 
-export default function PrimarySearchAppBar() {
+//Static Data for header
+const headerData = [
+  { name: "Home", id: "#home" },
+  { name: "About", id: "#about" },
+  { name: "Work", id: "#work" },
+  { name: "Contact", id: "#contact" },
+];
+
+export default function PrimarySearchAppBar(props) {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const location = useLocation();
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const history = useHistory();
 
-  const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
+  /**
+   * function to handle Mobile Menu close
+   */
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
-  };
+  }; // end of handleMobileMenuClose
 
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-
+  /**
+   * function to handle Mobile Menu open
+   * @param {*} event
+   */
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
-  };
+  }; // end of handleMobileMenuOpen
 
+  /**
+   * function to handle logo click
+   */
+  const logoHandler = () => {
+    history.push("/");
+    document.documentElement.scrollTop = 0; // scroll to top on logo click event
+  }; // end of logoHandler
+
+  // Component to render mobile menu view
   const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
@@ -53,134 +61,63 @@ export default function PrimarySearchAppBar() {
       transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
+      className={`${styles.menuHeader} text-center`}
     >
       <Scrollspy items={["home", "about", "contact", "portfolio"]}>
-        <div>
-          <li>
-            <a href={"#home"}>Home</a>
-          </li>
-        </div>
-        <div>
-          <li>
-            <a href={"#about"}>About</a>
-          </li>
-        </div>
-        <div>
-          <li>
-            <a href={"#contact"}>Contact</a>
-          </li>
-        </div>
-        <div>
-          <li>
-            <a href={"#portfolio"}>Portfolio</a>
-          </li>
-        </div>
-        {/* <li>
-                <a href={"home"}>Home</a>
-              </li>
-              <li>
-                <a href={"home"}>Home</a>
-              </li>
-              <li>
-                <a href={"home"}>Home</a>
-              </li> */}
+        {headerData.map((item) => (
+          <MenuItem onClick={() => handleMobileMenuClose()}>
+            <a
+              href={item.id}
+              className={
+                !location.hash && item.name === "Home"
+                  ? styles.activeNavLinkMenu
+                  : location.hash === item.id
+                  ? styles.activeNavLinkMenu
+                  : styles.navLinksMenu
+              }
+            >
+              {item.name}
+            </a>
+          </MenuItem>
+        ))}
       </Scrollspy>
-      {/* <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem> */}
     </Menu>
-  );
+  ); // end of mobile menu view
 
   return (
     <React.Fragment>
       <div className={classes.grow}>
-        <AppBar position="static" className={styles.header}>
-          <Toolbar>
+        <AppBar position="fixed" className={styles.header}>
+          <Toolbar variant={"dense"}>
             <div className={styles.headerLogo}>
-              <img src={logo} alt={"logo"} className={styles.logoImage} />
+              <IconButton
+                className={styles.logoButton}
+                onClick={() => logoHandler()}
+              >
+                <img src={logo} alt={"logo"} className={styles.logoImage} />
+              </IconButton>
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <Scrollspy items={["home", "about", "contact", "portfolio"]}>
-                <div>
-                  <li>
-                    <a href={"#home"}>Home</a>
-                  </li>
-                </div>
-                <div>
-                  <li>
-                    <a href={"#about"}>About</a>
-                  </li>
-                </div>
-                <div>
-                  <li>
-                    <a href={"#contact"}>Contact</a>
-                  </li>
-                </div>
-                <div>
-                  <li>
-                    <a href={"#portfolio"}>Portfolio</a>
-                  </li>
-                </div>
-                {/* <li>
-                <a href={"home"}>Home</a>
-              </li>
-              <li>
-                <a href={"home"}>Home</a>
-              </li>
-              <li>
-                <a href={"home"}>Home</a>
-              </li> */}
+              <Scrollspy
+                className="scrollspy"
+                items={["home", "about", "work", "contact"]}
+              >
+                {headerData.map((item, index) => (
+                  <a
+                    href={item.id}
+                    className={
+                      !location.hash && item.name === "Home"
+                        ? styles.activeNavLink
+                        : location.hash === item.id
+                        ? styles.activeNavLink
+                        : styles.navLinks
+                    }
+                  >
+                    {item.name}
+                  </a>
+                ))}
               </Scrollspy>
-              {/* <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div> */}
-              {/* <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton> */}
             </div>
             <div className={classes.sectionMobile}>
               <IconButton
@@ -196,20 +133,6 @@ export default function PrimarySearchAppBar() {
           </Toolbar>
         </AppBar>
         {renderMobileMenu}
-      </div>
-      <div>
-        <section id="home" className={styles.section}>
-          section 1
-        </section>
-        <section id="about" className={styles.section}>
-          section 2
-        </section>
-        <section id="contact" className={styles.section}>
-          section 3
-        </section>
-        <section id="portfolio" className={styles.section}>
-          section 4
-        </section>
       </div>
     </React.Fragment>
   );

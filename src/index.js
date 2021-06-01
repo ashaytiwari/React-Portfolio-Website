@@ -8,10 +8,18 @@ import "./assets/FontFamilies/Ubuntu-Light.ttf";
 import "./assets/FontFamilies/Ubuntu-Medium.ttf";
 import "./assets/FontFamilies/Ubuntu-Regular.ttf";
 import "./assets/FontFamilies/Yellowtail-Regular.ttf";
+import "./assets/FontFamilies/Alegreya-Medium.ttf";
+import "./assets/FontFamilies/Alegreya-MediumItalic.ttf";
+import "./assets/FontFamilies/Alegreya-Regular.ttf";
+import "./assets/FontFamilies/Alegreya-Bold.ttf";
+
+import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );
