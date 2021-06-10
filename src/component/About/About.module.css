@@ -1,78 +1,85 @@
-.aboutSection{
-    padding: 30px 100px;
+.aboutSection {
+  padding: 30px 100px;
 }
-.header{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.aboutHeading{
-    color: #202020;
-    font-size: 40px;
-    font-family: 'Alegreya-Bold';
-    text-transform: uppercase;
-    border-bottom: 3px solid #202020;
-    padding: 0 7px 3px 7px;
+.aboutHeading {
+  color: #202020;
+  font-size: 40px;
+  font-family: "Alegreya-Bold";
+  text-transform: uppercase;
+  border-bottom: 3px solid #202020;
+  padding: 0 7px 3px 7px;
 }
-.aboutWrapper{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.aboutWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-.imageWrapper{
-    width: fit-content;
-    position: relative;
+.imageWrapper {
+  width: fit-content;
+  position: relative;
 }
-.profileImg{
-    width: 100%;
-    display: block;
-    border-radius: 10px;
+.profileImg {
+  width: 80%;
+  display: block;
+  border-radius: 10px;
 }
-.overlay{
-    position: absolute;
+.overlay {
+  position: absolute;
   bottom: 0;
   background: rgb(0, 0, 0);
   background: rgba(0, 0, 0, 0.5); /* Black see-through */
   color: #f1f1f1;
-  width: 91%;
-  transition: .5s ease;
-  opacity:0;
+  width: 71%;
+  transition: 0.5s ease;
+  opacity: 0;
   color: white;
   font-size: 17px;
-  font-family: 'Ubuntu-Regular';
+  font-family: "Ubuntu-Regular";
   padding: 20px;
   text-align: center;
   border-radius: 0 0 10px 10px;
 }
 .imageWrapper:hover .overlay {
-    opacity: 1;
-  }
-.aboutContent{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-  }
-  .aboutTitle{
-      font-size: 25px;
-      font-family: 'Ubuntu-Medium';
-      color: #505050;
-      margin-bottom: 5px;
-  }
-  .aboutText{
-      color: #202020;
-      font-family: 'Ubuntu-Light';
-      font-size: 16px;
-      line-height: 23px;
-      text-align: center;
-      letter-spacing: 0.7px;
-  }
-  .link{
-      color: #e61212;
-      text-decoration: none;
-  }
-  .scrollSpy{
-      margin: 0px !important;
-      padding: 0px !important;
-  }
+  opacity: 1;
+}
+.aboutContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.aboutTitle {
+  font-size: 25px;
+  font-family: "Ubuntu-Medium";
+  color: #505050;
+  margin-bottom: 5px;
+}
+.aboutText {
+  color: #202020;
+  font-family: "Ubuntu-Light";
+  font-size: 16px;
+  line-height: 23px;
+  text-align: center;
+  letter-spacing: 0.7px;
+}
+.link {
+  color: #e61212;
+  text-decoration: none;
+}
+.scrollSpy {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+.progressSet {
+  padding: 10px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

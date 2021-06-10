@@ -16,7 +16,7 @@ const headerData = [
   { name: "Home", id: "#home" },
   { name: "About", id: "#about" },
   { name: "Work", id: "#work" },
-  { name: "Contact", id: "#contact" },
+  { name: "Contact", id: "#contact" }
 ];
 
 export default function PrimarySearchAppBar(props) {

@@ -1,0 +1,27 @@
+.progressWrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  background-color: #eee;
+  width: 100%;
+  margin-bottom: 30px;
+  box-shadow: 2px 2px 18px -5px rgba(8, 8, 8, 0.67);
+  -webkit-box-shadow: 2px 2px 18px -5px rgba(8, 8, 8, 0.67);
+  -moz-box-shadow: 2px 2px 18px -5px rgba(8, 8, 8, 0.67);
+}
+.skillsName {
+  padding: 8px;
+  color: white;
+  background-color: #e61212;
+  width: 100px;
+  min-width: 100px;
+  text-align: center;
+  font-family: "Ubuntu-Regular";
+}
+.progress {
+  background-color: brown;
+  padding: 17px;
+}
+.percentage {
+  font-family: "Ubuntu-Regular";
+}

@@ -1,12 +1,12 @@
-import './App.css'
-import HomePage from './container/HomePage/HomePage'
+import "./App.css";
+import HomePage from "./container/HomePage/HomePage";
 
 function App() {
   return (
-    <div className={'App'}>
+    <div className={"App"}>
       <HomePage />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
