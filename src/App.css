@@ -1,25 +1,3 @@
 .App {
-  /* text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: teal;
-  color: antiquewhite; */
   overflow-x: hidden;
-}
-.ubuntuBold {
-  font-family: "Ubuntu-Bold";
-}
-.ubuntuLight {
-  font-family: "Ubuntu-Light";
-}
-.ubuntuMedium {
-  font-family: "Ubuntu-Medium";
-}
-.ubuntuRegular {
-  font-family: "Ubuntu-Regular";
-}
-.yellowtail {
-  font-family: "Yellowtail-Regular";
 }

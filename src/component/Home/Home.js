@@ -5,7 +5,7 @@ import Button from "../../component/UI/Button/Button";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import resume from "../../assets/Files/resume.pdf";
 import { Tooltip } from "@material-ui/core";
-import { ResumeTooltipMsg } from "../../GlobalUtils/messageConstants";
+import { ResumeTooltipMsg } from "../../GlobalUtils/globalconstants";
 
 const Home = () => {
   return (

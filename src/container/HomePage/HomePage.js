@@ -1,4 +1,5 @@
 import React from "react";
+import About from "../../component/About/About";
 import Header from "../../component/Header/Header";
 import Home from "../../component/Home/Home";
 
@@ -7,6 +8,7 @@ const HomePage = () => {
     <div>
       <Header />
       <Home />
+      <About />
       <div>
         {/* <section id="home">
           <h2>Home</h2>
@@ -60,7 +62,7 @@ const HomePage = () => {
             injected humour, or non-characteristic words etc.
           </p>
         </section> */}
-        <section id="about">
+        {/* <section id="about">
           <h2>About</h2>
           <p>
             What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the
@@ -111,7 +113,7 @@ const HomePage = () => {
             generated Lorem Ipsum is therefore always free from repetition,
             injected humour, or non-characteristic words etc.
           </p>
-        </section>
+        </section> */}
         <section id="work">
           <h2>Work</h2>
           <p>
