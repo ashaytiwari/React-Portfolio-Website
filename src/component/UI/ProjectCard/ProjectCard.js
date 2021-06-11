@@ -9,7 +9,7 @@ const ProjectCard = ({ item }) => {
         <img src={item.src} alt={item.name} className={styles.image} />
         <div className={styles.container}>
           <div className={styles.content}>
-            <h2>{item.name}</h2>
+            <h2 className={styles.heading}>{item.name}</h2>
             <p className={styles.title}>{item.desc}</p>
           </div>
           <p>

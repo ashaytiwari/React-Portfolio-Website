@@ -21,3 +21,11 @@
   justify-content: center;
   flex-direction: column;
 }
+.tabHeader {
+  margin-bottom: 20px;
+}
+.tab {
+  font-size: 18px;
+  font-family: "Alegreya-Bold";
+  text-transform: none;
+}

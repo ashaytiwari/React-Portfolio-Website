@@ -24,10 +24,10 @@ function TabPanel(props) {
 const defaultMaterialTheme = createMuiTheme({
   palette: {
     primary: {
-      main: "#f7c014"
+      main: "#e61212"
     },
     secondary: {
-      main: "#f7c014"
+      main: "#e61212"
     }
   }
 });

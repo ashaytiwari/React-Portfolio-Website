@@ -19,8 +19,12 @@
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: white;
-
+  transition: transform 250ms;
+  /* border: 2px solid #e61212; */
   /* height: 500px; */
+}
+.card:hover {
+  transform: translateY(-10px);
 }
 
 .content {
@@ -39,25 +43,36 @@
   clear: both;
   display: table;
 }
-
+.heading {
+  font-size: 20px !important;
+  font-family: "Ubuntu-Regular";
+  letter-spacing: 0.5px;
+}
 .title {
   color: grey;
+  font-size: 14px;
+  font-family: "Ubuntu-Regular";
 }
 
 .button {
-  border: none;
+  border: 2px solid #e61212;
   outline: 0;
   display: inline-block;
   padding: 8px;
-  color: white;
-  background-color: #000;
+  color: #e61212;
+  background-color: white;
   text-align: center;
   cursor: pointer;
   width: 100%;
+  font-size: 17px;
+  font-family: "Alegreya-Medium";
+  letter-spacing: 0.7px;
 }
 
 .button:hover {
-  background-color: #555;
+  border: 2px solid #e61212;
+  color: #fff;
+  background-color: #e61212;
 }
 .image {
   width: 100%;
