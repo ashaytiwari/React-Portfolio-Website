@@ -5,7 +5,7 @@ import Profile from "../../assets/Images/profile2.jpeg";
 import { KritinUrl } from "../../GlobalUtils/globalconstants";
 import ScrollSpy from "react-scrollspy";
 import ProgressBarComponent from "../UI/ProgressBar/ProgressBar";
-import SkillSet, { skillSet } from "../../assets/Data/skillsSet.Data";
+import { skillSet } from "../../assets/Data/skillsSet.Data";
 import { Fade } from "react-reveal";
 
 const About = () => {

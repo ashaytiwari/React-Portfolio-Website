@@ -5,8 +5,8 @@ import { Fade } from "react-reveal";
 
 const ProjectCard = ({ item }) => {
   return (
-    <div className={styles.column}>
-      <Fade bottom>
+    <Fade bottom>
+      <div className={styles.column}>
         <div className={styles.card}>
           <img src={item.src} alt={item.name} className={styles.image} />
           <div className={styles.container}>
@@ -24,8 +24,8 @@ const ProjectCard = ({ item }) => {
             </p>
           </div>
         </div>
-      </Fade>
-    </div>
+      </div>
+    </Fade>
   );
 };
 
