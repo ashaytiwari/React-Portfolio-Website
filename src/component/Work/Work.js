@@ -3,6 +3,7 @@ import styles from "./Work.module.css";
 import { Tab, Tabs, createMuiTheme, ThemeProvider } from "@material-ui/core";
 import ProjectJson from "../../assets/Data/project.Data";
 import ProjectViewer from "../CommonComponents/ProjectViewer/ProjectViewer";
+import { Fade } from "react-reveal";
 
 /**
  * functional component for rendering tab panel view
@@ -44,23 +45,27 @@ const Work = () => {
 
   return (
     <div className={styles.workSection} id={"work"}>
-      <div className={styles.header}>
-        <h4 className={styles.aboutHeading}>Work</h4>
-      </div>
+      <Fade bottom>
+        <div className={styles.header}>
+          <h4 className={styles.aboutHeading}>Work</h4>
+        </div>
+      </Fade>
       <div className={styles.body}>
         {/* Tab Header Starts here */}
-        <ThemeProvider theme={defaultMaterialTheme}>
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            className={styles.tabHeader}
-          >
-            <Tab label={"HTML/CSS"} className={styles.tab} />
-            <Tab label={"Javascript"} className={styles.tab} />
-            <Tab label={"React"} className={styles.tab} />
-            <Tab label={"All"} className={styles.tab} />
-          </Tabs>
-        </ThemeProvider>
+        <Fade bottom>
+          <ThemeProvider theme={defaultMaterialTheme}>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              className={styles.tabHeader}
+            >
+              <Tab label={"HTML/CSS"} className={styles.tab} />
+              <Tab label={"Javascript"} className={styles.tab} />
+              <Tab label={"React"} className={styles.tab} />
+              <Tab label={"All"} className={styles.tab} />
+            </Tabs>
+          </ThemeProvider>
+        </Fade>
         {/* Tab Header ends here */}
 
         {Object.keys(ProjectJson).map((type, index) => (

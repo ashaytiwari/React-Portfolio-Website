@@ -6,23 +6,6 @@ import styles from "./ProjectViewer.module.css";
 import { findMultipleOf3 } from "../../../GlobalUtils/globalFunction";
 
 const ProjectViewer = ({ data }) => {
-  // return (
-  //   <Grid container>
-  //     {data.map((item) => (
-  //       <Grid
-  //         item
-  //         xs={12}
-  //         sm={12}
-  //         md={4}
-  //         lg={4}
-  //         xl={4}
-  //         className={styles.section}
-  //       >
-  //         <ProjectCard item={item} />
-  //       </Grid>
-  //     ))}
-  //   </Grid>
-  // );
   if (data.length % 3 === 0) {
     return (
       <Grid container>
