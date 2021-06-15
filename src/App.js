@@ -1,24 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import HomePage from "./container/HomePage/HomePage";
+import { SnackbarProvider } from "notistack";
+import { Slide, IconButton, makeStyles } from "@material-ui/core";
+import {
+  SnackbarAutohideDuration,
+  SnackbarDuplicate,
+  SnackbarHorizontalPosition,
+  SnackbarVerticalPosition
+} from "./GlobalUtils/configFileAccessor";
+import { CloseOutlined } from "@material-ui/icons";
+
+const useStyles = makeStyles({
+  error: { backgroundColor: "#ff726f" }
+});
 
 function App() {
+  const classes = useStyles();
+  const notistackRef = React.createRef();
+  const onClickDismiss = (key) => () => {
+    notistackRef.current.closeSnackbar(key);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SnackbarProvider
+      anchorOrigin={{
+        vertical: SnackbarVerticalPosition,
+        horizontal: SnackbarHorizontalPosition
+      }}
+      preventDuplicate={SnackbarDuplicate}
+      autoHideDuration={SnackbarAutohideDuration}
+      TransitionComponent={Slide}
+      ref={notistackRef}
+      classes={{
+        variantError: classes.error
+      }}
+      action={(key) => (
+        <IconButton onClick={onClickDismiss(key)} className={"iconButton"}>
+          <CloseOutlined className={"close"} />{" "}
+        </IconButton>
+      )}
+    >
+      <div className={"App"}>
+        <HomePage />
+      </div>
+    </SnackbarProvider>
   );
 }
 

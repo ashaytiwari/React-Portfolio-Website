@@ -1,0 +1,14 @@
+{
+  "SNACKBAR": {
+    "VERTICAL_POSITION": "top",
+    "HORIZONTAL_POSITION": "right",
+    "PREVENT_DUPLICATE": true,
+    "AUTOHIDE_DURATION_IN_MILI_SECOND": 5000
+  },
+  "EMAILJS": {
+    "SERVICE_ID": "service_7yoo62l",
+    "TEMPLATE_ID": "template_udufsz9",
+    "USER_ID": "user_kokncTHhbe7z6jw31wM7o",
+    "SERVICE_PROVIDER": "gmail"
+  }
+}

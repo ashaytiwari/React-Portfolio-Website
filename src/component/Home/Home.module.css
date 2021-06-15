@@ -1,0 +1,71 @@
+.homeImage {
+  width: 100%;
+}
+.introText {
+  font-size: 45px;
+  margin: 10px 0;
+  font-family: "Ubuntu-Bold";
+  letter-spacing: 0.3px;
+}
+.higlightName {
+  color: #e61212;
+  font-family: "Alegreya-Bold";
+  letter-spacing: 0.3px;
+  font-size: 46px;
+}
+.statusText {
+  color: #f5f5f5;
+  font-size: 30px;
+  margin: 5px 0;
+  font-family: "Ubuntu-Bold";
+}
+.loveText {
+  color: #707070;
+  font-size: 20px;
+  margin: 12px 0;
+  font-family: "Ubuntu-Medium";
+}
+.container {
+  position: relative;
+  margin: 0 auto;
+}
+.homeContent {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.resumeBtn {
+  background-color: inherit;
+  color: #fff;
+  border: 1px solid #fff;
+  outline: none;
+  cursor: pointer;
+  padding: 12px 10px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  font-family: "Ubuntu-Medium";
+  text-transform: uppercase;
+  margin: 10px 0;
+}
+.resumeBtn:hover {
+  background-color: #e61212;
+  border: 1px solid #e61212;
+  color: #fff !important;
+}
+.icon {
+  margin-left: 10px;
+  font-size: 30px !important;
+}
+.downloadLink {
+  text-decoration: none;
+}

@@ -1,0 +1,75 @@
+.contactSection {
+  padding: 30px 100px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.aboutHeading {
+  color: #202020;
+  font-size: 40px;
+  font-family: "Alegreya-Bold";
+  text-transform: uppercase;
+  border-bottom: 3px solid #202020;
+  padding: 0 7px 3px 7px;
+  margin: 1.33em 0 10px 0;
+}
+.greetMsg {
+  font-family: "Alegreya-Regular";
+  color: #e61212;
+  font-size: 25px;
+  letter-spacing: 0.5px;
+  margin: 5px;
+}
+.msg {
+  color: #707070;
+  font-size: 16px;
+  font-family: "Ubuntu-Regular";
+  text-align: center;
+  margin: 3px 0;
+}
+.image {
+  width: 40%;
+}
+.row {
+  display: flex;
+  align-items: center;
+}
+.row svg {
+  color: #e61212;
+  font-size: 30px;
+  margin-right: 20px;
+}
+.content {
+  color: #707070;
+  font-size: 18px;
+  font-family: "Ubuntu-Regular";
+}
+.contactForm {
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; */
+}
+.submitBtn {
+  padding: 13px 28px;
+  font-size: 20px;
+  border: 1px solid #e61212;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  font-family: "Ubuntu-Regular";
+}
+.submitIcon {
+  color: #e61212;
+  font-size: 30px;
+  margin-left: 10px;
+}
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
