@@ -48,8 +48,28 @@
   font-family: "Ubuntu-Regular";
 }
 .contactForm {
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; */
+}
+.submitBtn {
+  padding: 13px 28px;
+  font-size: 20px;
+  border: 1px solid #e61212;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  font-family: "Ubuntu-Regular";
+}
+.submitIcon {
+  color: #e61212;
+  font-size: 30px;
+  margin-left: 10px;
+}
+.loader {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  padding: 30px;
 }
